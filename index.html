@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="container">
+        <div class="tab">
+            <button class="tablinks" onclick="openCalculator(event, 'Descriptivo')">Descriptivo</button>
+            <button class="tablinks" onclick="openCalculator(event, 'Comparativo')">Comparativo</button>
+            <button class="tablinks" onclick="openCalculator(event, 'Correlacional')">Correlacional</button>
+        </div>
+      
+        <div id="Descriptivo" class="tabcontent">
+            <br>
+            <p style="display: inline;">A estimar:</p>
+            <label style="display: inline;">
+                <input type="radio" name="estimar" value="proporcion" onclick="showOptions('proporcion')"> Proporción
+            </label>
+            <label style="display: inline;">
+                <input type="radio" name="estimar" value="media" onclick="showOptions('media')"> Media
+            </label>
+          
+            <div id="opcionesProporcion" class="opciones" style="display: none;">
+                <br>
+                <p style="display: inline;">¿Sabe el tamaño de la población? </p>
+                  <label style="display: inline;">
+                      <input type="radio" name="poblacion" value="Si" onclick="showOptionsPoblacion('Si','proporcion')"> Si
+                  </label>
+                  <label style="display: inline;">
+                      <input type="radio" name="poblacion" value="No" onclick="showOptionsPoblacion('No','proporcion')"> No
+                  </label>
+                            
+                  <div id="elementosPoblacion" style="display: none;">
+                    <br>
+                      <label>Poblacion <input type="number" id="poblacionPro" inputmode="numeric"></label>
+                      <br>
+                  </div>
+            
+                  <div id="elementosProporcion">
+                      <br>
+                      <label>Nivel de confianza </label>
+                      <label style="display: inline;">
+                          <input type="radio" name="confianzaPro" value="95"> 95%
+                      </label>
+                      <label style="display: inline;">
+                          <input type="radio" name="confianzaPro" value="99"> 99%
+                      </label>
+                      <br><br>
+                      <label>Proporción esperada (%) <input type="number" id="proporcionEsperada" inputmode="numeric"></label>
+                      <br><br>
+                      <label>Precisión (%) <input type="number" id="PrecisionPro" inputmode="numeric"></label>
+                  </div>
+                  <br>
+                  <button class ="calculate-button" onclick="calcularResultadoDesPro()">Calcular</button>
+                  <br><br>
+                  <label id="resultadoLabelDesPro" class="resultado-label"></label>
+            </div>
+            
+            <div id="opcionesMedia" class="opciones" style="display: none;">
+                <br>
+                <p style="display: inline;">¿Sabe el tamaño de la población? </p>
+                  <label style="display: inline;">
+                      <input type="radio" name="poblacion" value="Si" onclick="showOptionsPoblacion('Si', 'media')"> Si
+                  </label>
+                  <label style="display: inline;">
+                      <input type="radio" name="poblacion" value="No" onclick="showOptionsPoblacion('No', 'media')"> No
+                  </label>
+            
+                  <div id="elementosPoblacionMedia" style="display: none;">
+                    <br>
+                      <label>Poblacion <input type="number" id="PoblacionMe" inputmode="numeric"></label>
+                      <br>
+                  </div>
+            
+                  <div id="elementosMedia">
+                    <br>
+                      <label>Nivel de confianza </label>
+                      <label style="display: inline;">
+                          <input type="radio" name="confianzaMe" value="95"> 95%
+                      </label>
+                      <label style="display: inline;">
+                          <input type="radio" name="confianzaMe" value="99"> 99%
+                      </label>
+                      <br><br>
+                      <label>Varianza <input type="number" id="varianzaMe" inputmode="numeric"></label>
+                      <br><br>
+                      <label>Precisión (%) <input type="number" id="PrecisionMe" inputmode="numeric"></label>
+                  </div>
+                  <br>
+                  <button class ="calculate-button" onclick="calcularResultadoDesMe()">Calcular</button>
+                  <br><br>
+                  <label id="resultadoLabelDesMe" class="resultado-label"></label>
+            </div>
+            <br><br>
+        </div>
+                    
+        <div id="Comparativo" class="tabcontent">
+            <br>
+            <p style="display: inline;">A estimar:</p>
+            <label style="display: inline;">
+                <input type="radio" name="estimar_hipotesis" value="proporcion" onclick="showOptionsComparativo('proporcion')"> 2 Proporciones
+            </label>
+            <label style="display: inline;">
+                <input type="radio" name="estimar_hipotesis" value="media" onclick="showOptionsComparativo('media')"> 2 Medias
+            </label>
+    
+            <div id="opcionesProporcionComparativo" class="opciones" style="display: none;">
+                <br>
+                <label>Z alpha <input type="number" id = "zAlphaComPro" inputmode="numeric"></label>
+                <br><br>
+                <label>Z beta <input type="number" id ="zBetaCompro" inputmode="numeric"></label>
+                <br><br>
+                <label>Proporcion 1 (%) <input type="number" id="proporcion1" inputmode="numeric"></label>
+                <br><br>
+                <label>Proporcion 2 (%) <input type="number" id="proporcion2" inputmode="numeric"></label>
+                <br><br>
+                <button class ="calculate-button" onclick="calcularResultadoComPro()">Resultado</button>
+                <br><br>
+                <label id="resultadoLabelComPro" class="resultado-label"></label>
+            </div>
+    
+            <div id="opcionesMediaComparativo" class="opciones" style="display: none;">
+                <br>
+                  <label>Z alpha <input type="number" id="zAlphaComMe" inputmode="numeric"></label>
+                  <br><br>
+                  <label>Z beta <input type="number" id="zBetaComMe" inputmode="numeric"></label>
+                  <br><br>
+                  <label>Varianza <input type="number" id="Varianza" inputmode="numeric"></label>
+                  <br><br>
+                  <label>Diferencia <input type="number" id="Diferencia" inputmode="numeric"></label>
+                  <br><br>
+                  <button class ="calculate-button" onclick="calcularResultadoComMe()">Resultado</button>
+                  <br><br>
+                  <label id="resultadoLabelComMe" class="resultado-label"></label>
+            </div>
+            <br><br>
+        </div>
+      
+        <div id="Correlacional" class="tabcontent">
+            <br>
+            <label>Z alpha <input type="number" id = "zAlphaCorre" inputmode="numeric"></label>
+            <br><br>
+            <label>Z beta <input type="number" id ="zBetaCorre" inputmode="numeric"></label>
+            <br><br>
+            <label>Valor de Pulso <input type = "number" id= "PulsoCorre" inputmode="numeric"></label>
+            <br><br>
+            <p style="display: inline;">¿Prevee pérdidas? </p>
+            <label style="display: inline;">
+                <input type="radio" name="perdidas" value="Si" onclick="showOptionsPerdidas('Si')"> Si
+            </label>
+            <label style="display: inline;">
+                <input type="radio" name="perdidas" value="No" onclick="showOptionsPerdidas('No')"> No
+            </label>
+          
+            <div id="elementosPerdida" style="display: none;">
+                <br>
+                <label>Perdida estimada (%) <input type="number" id="PerdidaEsti" inputmode="numeric"></label>
+                
+            </div>
+            <br><br>
+            <button class ="calculate-button" onclick="calcularResultadoCorre()">Resultado</button>
+            <br><br>
+            <label id="resultadoLabelCorre" class="resultado-label"></label>
+            <br><br>
+            <label id="resultadoLabelCorrePerdi" class="resultado-label"></label>
+        </div>
+    </div>
+    <script src="logica.js"></script>
+</body>
+</html>

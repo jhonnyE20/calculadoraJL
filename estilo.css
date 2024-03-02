@@ -1,0 +1,77 @@
+.tab {
+    overflow: hidden;
+    border: 1px solid #141414;
+    border-radius: 5px;
+    background-color: #FC7E03;
+    width: 100%;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17 px;
+    width: 33.33%;
+    color:white;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #e17306;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #e17306;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #141414;
+    border-top: none;
+    animation: fadeEffect 1s;
+    clear: both;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+.calculate-button {
+  background-color: #FC7E03;
+  border: 2px solid black;
+  border-radius: 5px;
+  color: white; 
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer; 
+}
+
+.resultado-label {
+  display: block; 
+  text-align: center; 
+}
