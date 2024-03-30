@@ -4,9 +4,9 @@
     border-radius: 5px;
     background-color: #FC7E03;
     width: 100%;
+    display: flex;
   }
   
-  /* Style the buttons that are used to open the tab content */
   .tab button {
     background-color: inherit;
     float: left;
@@ -16,21 +16,19 @@
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17 px;
-    width: 33.33%;
+    width: 25%;
     color:white;
+    flex-grow: 1;
   }
   
-  /* Change background color of buttons on hover */
   .tab button:hover {
     background-color: #e17306;
   }
   
-  /* Create an active/current tablink class */
   .tab button.active {
     background-color: #e17306;
   }
   
-  /* Style the tab content */
   .tabcontent {
     display: none;
     padding: 6px 12px;
@@ -43,6 +41,11 @@
     box-sizing: border-box;
 }
 
+@media (max-width: 450px) {
+  .tab button {
+      width: 100%;
+  }
+}
 
   @keyframes fadeEffect {
     from {opacity: 0;}
@@ -57,7 +60,7 @@ input::-webkit-inner-spin-button {
 
 .container {
     max-width: 800px;
-    margin: 0 auto; 
+    margin: 100px auto 0 auto; 
     padding: 20px;
 }
 
@@ -74,4 +77,18 @@ input::-webkit-inner-spin-button {
 .resultado-label {
   display: block; 
   text-align: center; 
+}
+
+.watermark-container {
+  position: fixed;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.watermark-image {
+  width: 250px;
+  height: auto;
 }

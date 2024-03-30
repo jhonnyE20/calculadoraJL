@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
+    <div class="watermark-container">
+        <img src="imagenes/logo.png" class="watermark-image" alt="Marca de Agua">
+    </div>
     <div class="container">
         <div class="tab">
             <button class="tablinks" onclick="openCalculator(event, 'Descriptivo')">Descriptivo</button>
             <button class="tablinks" onclick="openCalculator(event, 'Comparativo')">Comparativo</button>
             <button class="tablinks" onclick="openCalculator(event, 'Correlacional')">Correlacional</button>
+            <button class="tablinks" onclick="openCalculator(event, 'calculo_muestral')">Calculo Muestral</button>
         </div>
       
         <div id="Descriptivo" class="tabcontent">
@@ -159,14 +163,80 @@
             <div id="elementosPerdida" style="display: none;">
                 <br>
                 <label>Perdida estimada (%) <input type="number" id="PerdidaEsti" inputmode="numeric"></label>
-                
             </div>
             <br><br>
             <button class ="calculate-button" onclick="calcularResultadoCorre()">Resultado</button>
             <br><br>
             <label id="resultadoLabelCorre" class="resultado-label"></label>
-            <br><br>
+            <br>
             <label id="resultadoLabelCorrePerdi" class="resultado-label"></label>
+        </div>
+
+        <div id ="calculo_muestral" class="tabcontent">
+            <br>
+            <p style="display: inline;">Calcular caso : </p>
+            <label style="display: inline;">
+                <input type="radio" name="calcular_caso" value="control" onclick="showOptionsTamaniomuestral('control')"> Control
+            </label>
+            <label style="display: inline;">
+                <input type="radio" name="calcular_caso" value="cohorte" onclick="showOptionsTamaniomuestral('cohorte')"> Cohorte
+            </label>
+
+            <div id="opcionesCasoControl" class="opciones" style="display: none;">
+              <br>
+              <label>Frecuencia entre controles (%): <input type = "number" id ="FrecuControl" inputmode="numeric"></label>
+              <br><br>
+              <label>Odds ratio previstos: <input type = "number" id ="OdRatio" inputmode="numeric"></label>
+              <br><br>
+              <label>Nivel de confianza </label>
+              <label style="display: inline;">
+                  <input type="radio" name="confianzaControl" value="95"> 95%
+              </label>
+              <label style="display: inline;">
+                  <input type="radio" name="confianzaControl" value="99"> 99%
+              </label>
+              <br><br>
+              <label>Potencia: <input type = "number" id = "Poten" inputmode="numeric"></label>
+              <br><br>
+              <p style="display: inline;">¿Tiene más controles que casos? </p>
+              <label style="display: inline;">
+                  <input type="radio" name="controlcaso" value="Si" onclick="showOptionsControlCaso('Si')"> Si
+              </label>
+              <label style="display: inline;">
+                  <input type="radio" name="controlcaso" value="No" onclick="showOptionsControlCaso('No')"> No
+              </label>
+          
+              <div id="elementosControlCaso" style="display: none;">
+                  <br>
+                  <label>Numero de controles por caso: <input type="number" id="ConCa" inputmode="numeric"></label>
+              </div>
+              <br><br>
+              <button class ="calculate-button" onclick="calcularResultadoControl()">Resultado</button>
+              <br><br>
+              <label id="resultadoLabelCasoControl" class="resultado-label"></label>
+            </div>
+
+
+            <div id="opcionesCasoCohorte" class="opciones" style="display: none;">
+             <br>
+             <label>Expuestos (%): <input type="number" id="p1" inputmode="numeric"></label>
+             <br><br>
+             <label>No Expuestos (%): <input type="number" id="p2" inputmode="numeric"></label>
+             <br><br>
+             <label>Nivel de confianza </label>
+             <label style="display: inline;">
+                  <input type="radio" name="confianzaCohorte" value="95"> 95%
+             </label>
+             <label style="display: inline;">
+                  <input type="radio" name="confianzaCohorte" value="99"> 99%
+             </label>
+             <br><br>
+             <label>Presición Relativa: <input type="number" id="PR" inputmode="numeric"></label>
+             <br><br>
+             <button class ="calculate-button" onclick="calcularResultadoCohorte()">Resultado</button>
+             <br><br>
+             <label id="resultadoLabelCohorte" class="resultado-label"></label>
+            </div>
         </div>
     </div>
     <script src="logica.js"></script>
