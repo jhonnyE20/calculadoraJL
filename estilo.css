@@ -44,6 +44,19 @@
 @media (max-width: 450px) {
   .tab button {
       width: 100%;
+      padding: 10px;
+  }
+
+  .watermark-container {
+    position: relative;
+    top: 33%;
+    transform: none;
+    opacity: 1;
+  } 
+
+.watermark-image {
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -86,6 +99,7 @@ input::-webkit-inner-spin-button {
   transform: translate(-50%, -50%);
   opacity: 0.3;
   pointer-events: none;
+  z-index: -1;
 }
 
 .watermark-image {

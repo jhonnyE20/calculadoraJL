@@ -241,7 +241,7 @@ function calcularResultadoCorre(){
         var SNperdida = parseFloat(document.getElementById("PerdidaEsti").value);
         var Nperdida = SNperdida/100;
         estiperdi = resultadoCorre / (1-Nperdida);
-        estiperdi = Math.ceil(estiperdi);
+        estiperdi = Math.round(estiperdi);
         document.getElementById("resultadoLabelCorre").innerText = "El resultado es: " + resultadoCorre;
         document.getElementById("resultadoLabelCorrePerdi").innerText = "El resultado ajustado a perdidas es: " + estiperdi;
         resultadoLabelCorrePerdi.style.display = 'block';
@@ -288,7 +288,7 @@ function calcularResultadoControl(){
         var resultado = Math.pow((confianza * Math.sqrt(2 * p * (1-p))) + (potencia * Math.sqrt((p1*(1-p1))+(frecuencia*(1-frecuencia)))), 2)/Math.pow((p1-frecuencia),2);
     }
 
-    resultado = Math.ceil(resultado)
+    resultado = Math.round(resultado)
 
     document.getElementById("resultadoLabelCasoControl").innerText = "El resultado es: " + resultado;
 }
@@ -317,7 +317,7 @@ function calcularResultadoCohorte(){
 
     resultadoCohorte = Math.pow(confianza,2) * ( ((1-p1)/p1 + (1-p2)/p2) / (Math.pow(Math.log(1 - PreRe), 2)) )
 
-    resultadoCohorte = Math.ceil(resultadoCohorte)
+    resultadoCohorte = Math.round(resultadoCohorte)
 
     document.getElementById("resultadoLabelCohorte").innerText = "El resultado es: " + resultadoCohorte;
 }
